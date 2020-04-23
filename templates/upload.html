@@ -1,0 +1,108 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<%if( session.getAttribute("email")!=null){ %>
+<head>
+ 
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Upload File</title>
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+</head>
+<style type="text/css">
+    
+.box{
+    padding-top: 20px;
+    
+}
+body{
+
+    background-image: url("img/upload.jpg");
+    background-size: cover;
+}
+.buttonright{
+    float:right;
+}
+.buttonclr{
+   background-color: #1e6b8f;
+    padding: 0.8em;
+    border: none;
+    
+    border-radius: 10%;
+}
+</style>
+<body>
+ <% session.getAttribute("email"); %>
+<div class="container box">
+   
+    <div class="col-md-5">
+        <form method="post" action="FileUploadServlet" enctype="multipart/form-data">
+            <input type="file" id="files" name="files" multiple="multiple" />
+            <p style="text-align: left; margin-top: 20px;">
+                <input type="submit" value="Upload Files" class="btn btn-success" />
+            </p>
+            </form>
+            <form  method="post" action="#" enctype="multipart/form-data">
+                <div class="col-md-5">
+            <p style="text-align: left; margin-top: 20px; position: relative; right:10%;">
+                <input type="submit" value="Delete file" class="btn btn-danger" />
+            </p>
+        </div>
+            </form>
+        
+    </div>
+
+   
+        <div class="container">
+    <div  class="buttonright">
+        <p style="float:right; margin-top: 20px;">
+                <input type="submit" value="Log out" class="buttonclr" />
+            </p>
+        </div>
+
+   
+
+
+
+  
+<!-- List All Uploaded Files -->
+        <div class="panel">
+            <a id="allFiles" class="hyperLink" href="<%=request.getContextPath()%>/UploadedFilesServlet">List all uploaded files</a>
+        </div>
+
+
+
+</div>
+
+<!-- you need to include the ShieldUI CSS and JS assets in order for the Upload widget to work -->
+<link rel="stylesheet" type="text/css" href="http://www.shieldui.com/shared/components/latest/css/light-bootstrap/all.min.css" />
+<script type="text/javascript" src="http://www.shieldui.com/shared/components/latest/js/shieldui-all.min.js"></script>
+
+<script type="text/javascript">
+    jQuery(function ($) {
+        $("#files").shieldUpload();
+    });
+</script>
+</body>
+<%} %>
+</html>
+
+
+
+
+
+
+
+
+
+

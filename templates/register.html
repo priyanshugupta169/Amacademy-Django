@@ -1,0 +1,73 @@
+{%extends 'basicregister.html'%}
+{%load static%}
+{%block content%}
+        <!-- <section class="signup"> -->
+                <div class="container">
+                    <div class="signup-content">
+                        <div id="signup" class="signup-form">
+                            <h2 class="form-title">Sign up</h2>
+                            <form action="/accounts/register.html"  method="post"  onsubmit="return register()" class="register-form" id="register-form">
+                                {%csrf_token%}
+                               
+                                <div >
+                                <div class="form-group">
+                                    <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                                    <input type="text" name="name" id="name" placeholder="Your Name" required/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email"><i class="zmdi zmdi-email"></i></label>
+                                    <input type="email" name="email" id="email" placeholder="Your Email" required/>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="phno"><i class="fa fa-phone"></i></label>
+                                     <input id="phno" type="text" name="phno"  placeholder="Phone No" required>
+                                </div>
+                               
+                                <div class="form-group">
+                                    <label for="pass"><i class="zmdi zmdi-lock"></i></label>
+                                    <input type="password" name="pass" id="pass" placeholder="Password" required/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="re-pass"><i class="zmdi zmdi-lock-outline"></i></label>
+                                    <input type="password" name="re_pass" id="re_pass" placeholder="Repeat your password" required/>
+                                </div>
+
+                                <div class="form-group">
+                                        <label for="country"><i class=""></i></label>
+                                        <input type="text" name="country" id="country" placeholder="Country" required/>
+                                </div>
+                                <div class="form-group">
+                                        <label for="city"><i class=""></i></label>
+                                        <input type="text" name="city" id="city" placeholder="City" required/>
+                                </div>
+                                
+                                <div class="form-group form-button">
+                                    <input onclick=""  type="submit" class="form-submit" value="Register"/>
+                                </div>
+                                	
+                                
+                                </div>
+                                
+                            </form>                            
+                            {%for message in messages %}
+                            <script>
+                                alert("{{message}}")
+                            </script>
+                            {%endfor%}
+                        </div>
+                        
+                        
+                        
+                        <div class="signup-image">
+                            <figure><img src="{% static 'img/signup-image.jpg' %}" alt="sing up image"></figure>
+                            <a href="login.html" class="signup-image-link">I am already member</a>
+                        </div>
+                        
+                        
+                        
+                    </div>
+                </div>
+            <!-- </section> -->
+
+{%endblock%}

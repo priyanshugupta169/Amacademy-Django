@@ -1,0 +1,27 @@
+{%extends 'header_footer.html'%}
+    {%load static%}
+    {%block content%}
+	
+            {%if user.is_authenticated and user.is_admin%}
+            {%if doubts%}
+            {%for doubt in doubts%}
+                                       
+                      <table style="table-layout: auto;border-collapse: separate; margin: 20px;border-spacing: 20px">
+                  	<tr><th>Name</th><th>Email</th> <th>Doubt</th></tr>
+                                     
+                 
+                  <tr>
+                  <td>{{doubt.name}}</td>
+                  <td>{{doubt.email}}</td>  
+                  <td>{{doubt.doubt}}</td>
+                  <td>{{doubt.date}}</td>
+                  </tr>
+               
+                  
+                  {%endfor%}
+                       </table>
+                       
+                       {%endif%}
+                       {%endif%}
+{%endblock%}
+     

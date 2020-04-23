@@ -1,0 +1,309 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta name="author" content="Priyanshu Gupta">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Title -->
+    <title>Amacademy</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="{% static 'img/core-img/logo.png' %}">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+
+
+<style>.
+
+
+
+body {font-family: Arial, Helvetica, sans-serif;}
+
+/* The Modal (background) */
+.modal {
+ display: none;
+  position: fixed; /* Stay in place */
+  z-index: 1000; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 30px;
+  border: 1px solid #888;
+  width: 60%;
+  border-radius: 1em;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  height: 30px;
+  width: 30px;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+</style>
+			
+</head>
+
+<body>
+    
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader"></div>
+    </div>
+    <!-- /Preloader -->
+    
+    <!-- Header Area Start -->
+    <header class="header-area">
+        <!-- Top Header Area Start -->
+        <div class="top-header-area">
+            <div class="container h-100">
+                <div class="row h-100 align-items-center">
+                    <div class="col-5">
+                        <div class="top-header-content">
+                            <p>Welcome to Amacademy</p>
+                           
+                        </div>
+                        
+                    </div>
+                   
+                    
+                    
+                   
+                    
+                    <div class="col-7">
+                        <div class="top-header-content text-right">
+                            {%if user.is_authenticated%}
+                            <span style="color: white" class="mx-2"> Hi  {{user.username}}    
+                            </span>
+                            <a href="/accounts/logout" style="color: white"> Logout</a>
+                            <a href="/accounts/ChangePassword.html" style="color: white"> Change Pass</a>
+                            {%else%}
+                             <a href="/accounts/login.html" style="color: white"> Login</a>
+                             {%endif%}
+                            </p>
+                        </div>
+                    </div>
+                   
+                    
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Top Header Area End -->
+
+
+        <!-- Main Header Start -->
+        <div class="main-header-area">
+            <div class="classy-nav-container breakpoint-off">
+                <div class="container">
+                    <!-- Classy Menu -->
+                    <nav class="classy-navbar justify-content-between" id="akameNav">
+
+                        <!-- Logo -->
+                        <a class="nav-brand" href="index.html"><img src="{% static 'img/core-img/logo.png' %}" alt="logo" style="width:175px;height:40px"></a>
+
+                        <!-- Navbar Toggler -->
+                        <div class="classy-navbar-toggler">
+                            <span class="navbarToggler"><span></span><span></span><span></span></span>
+                        </div>
+
+                        <!-- Menu -->
+                        <div class="classy-menu">
+                            <!-- Menu Close Button -->
+                            <div class="classycloseIcon">
+                                <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                            </div>
+                            <!-- Nav Start -->
+                            <div class="classynav">
+                                <ul id="nav">
+                                    <li><a href="/">Home</a></li>
+                                    
+                                    <li><a href="#">Classes</a>
+                                        <ul class="dropdown">
+                                            <li><a href="/specificfile.html/12">- Class XII</a>
+                                                
+                                            </li>
+                                            <li><a href="/specificfile.html/11">- Class XI</a>
+                                                
+                                            </li>
+                                            <li><a href="/specificfile.html/10">- Class X</a>
+                                                
+                                            </li>
+                                            <li><a href="/specificfile.html/9">- Class IX</a>
+                                                
+                                            </li>
+                                            <li><a href="/specificfile.html/8">- Class VIII</a>
+                                                
+                                            </li>
+                                            <li><a href="/specificfile.html/7">- Class VII</a>
+                                               
+
+                                            </li>
+                                            <li><a href="/specificfile.html/6">- Class VI</a>
+                                                
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="#"> Other courses</a>
+                                                <ul class="dropdown">
+                                                    <li><a href="/specificfile.html/php">- PHP</a></li>
+                                                    <li><a href="/specificfile.html/java">- JAVA</a></li>
+                                                    <li><a href="/specificfile.html/c">- C/C++</a></li>
+                                                    <li><a href="/specificfile.html/.net">- .NET</a></li>
+                                                </ul>
+                                    </li>
+                                    <li><a href="/contact.html"> Contact</a></li>
+                                    <li><a href="/about.html">About Us</a></li>
+                                    
+                                </ul>
+
+                                
+                                <!-- Book Icon -->
+                               
+                               
+                                <div >
+    							<form action="/specificfile.html/all">
+     							<input type="text" placeholder="Search.." name="search">
+     							<button type="submit"><i class="fa fa-search"></i></button>
+    							</form>
+ 								</div>
+                                                          </div>
+                                                          
+                            <!-- Nav End -->
+                        </div>
+                        
+                    </nav>
+                    
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Header Area End -->
+
+
+    
+    {%block content%}
+
+    {%endblock%}
+
+
+    {%for message in messages %}
+        <script>
+        alert("{{message}}")
+        </script>
+    {%endfor%}
+    
+    
+<!-- Footer Area Start -->
+<footer class="footer-area section-padding-80-0">
+    <div class="container">
+        <div class="row justify-content-between">
+
+            <!-- Single Footer Widget -->
+            <div class="col-12 col-sm-6 col-md-4">
+                <div class="single-footer-widget mb-80">
+                    <!-- Footer Logo -->
+                    <a href="#" class="footer-logo"><img src="{% static 'img/core-img/logo.png' %}" alt="logo" style="width:150px;height:30px"></a>
+
+                    <p class="mb-30">Better education for better World</p>
+                        {%if user.is_authenticated and user.is_admin%}
+                        <form action="doubts.html" method="post">
+                            {%csrf_token%}
+                        <input type="submit" style="border: none;background-color: white;" value="User Doubts" class="">
+                        </form>
+                        
+                        <a href="accounts/registeradmin.html">register Admin</a>
+                        {%endif%}
+                    <!-- Copywrite Text -->
+                   
+                    <div class="copywrite-text">
+                        <p> <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved  by <a href="https://amacademy.in/" target="_blank">AmAcademy.in</a><a style="display:none" href="https://colorlib.com" target="_blank">Colorlib</a>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Single Footer Widget -->
+            <div class="col-12 col-sm-6 col-md-4 col-xl-3">
+                <div class="single-footer-widget mb-80">
+                   
+
+                  
+                    <!-- Social Info -->
+                    <div class="social-info">
+                        <a href="https://www.facebook.com/" class="facebook"><i class="fa fa-facebook"></i></a>
+
+                        <a href="https://www.instagram.com/" class="instagram"><i class="fa fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Single Footer Widget -->
+            <div class="col-12 col-md-4 col-xl-3">
+                <div class="single-footer-widget mb-80">
+
+                    <!-- Widget Title -->
+                    <h4 class="widget-title">Contact Us</h4>
+
+                    <!-- Contact Address -->
+                    <div class="contact-address">
+                        <p>mob no. +91 7869608239</p>
+                        <p style="font-size: 14px;">E-mail:priyanshugupta169@gmail.com</p>
+                        <p>Address: Ambedkar nagar B-76 Mig colony</p>
+                        <p>Made by: Priyanshu Gupta</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</footer>
+<!-- Footer Area End -->
+
+    
+
+    <!-- All JS Files -->
+    <!-- jQuery -->
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <!-- Popper -->
+    <script src="{% static 'js/popper.min.j' %}s"></script>
+    <!-- Bootstrap -->
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <!-- All Plugins -->
+    <script src="{% static 'js/akame.bundle.js' %}"></script>
+    <!-- Active -->
+    <script src="{% static 'js/default-assets/active.js' %}"></script>
+
+</body>
+
+</html>

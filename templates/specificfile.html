@@ -1,0 +1,82 @@
+{%extends "header_footer.html"%}
+{% load static%}
+{%block content%}
+
+           <div class="container">
+            <div class="row">
+           
+
+                {%if user.is_authenticated and user.is_admin%}
+                  
+                                         <form id="fileUploadForm" method="post" action="/specificfile.html/{{course_name}}" enctype="multipart/form-data">
+                                            {%csrf_token%}
+                                        <input style="display: none;" id="fileAttachment" type="file" name="fileUpload" />
+                                      	 <label for="fileAttachment">
+                                      	 <img class="team-member-img single-team-member" alt="add file" src="{% static 'img/Upload.jpg' %}"  style="height: 200px;width:275px;">
+                                      	 </label>
+                                      	 
+                                      	 <input type="text" style="display: none" value="" name="course">
+                                      	 
+                                      	 <br>
+                                      	 <input style="float:right;" id="uploadBtn" type="submit" class="btn btn-success" value="Upload">
+                                           </form>
+                        
+                                       
+                  {%endif%}
+                   
+                  {%for fil in files%}
+                  <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="single-team-member mb-80 wow fadeInUp" data-wow-delay="200ms">
+                        <div class="team-member-img">
+                            <img src="{% static 'img/bg-img/book1.jpg' %}" alt="book 1" style="height: 200px;">
+                            <!-- Social Info -->
+                            <div class="team-social-info d-flex align-items-center justify-content-center">
+                                <div class="social-link">
+                                	
+                                	<a target="_blank" href="/readfile.html/file={{fil.filename}}"><i class="fa fa-eye"></i></a>
+                                    <a href="/download.html/file={{fil.filename}}"><i class="fa fa-download"></i></a>
+                                   {%if user.is_authenticated and user.is_admin%}
+                                   			<a onclick="return confirm('Are you Sure you want to delete?')" href="/delete.html/file={{fil.filename}}"><i class="fa fa-trash"></i></a>
+                                   			
+                                   {%endif%}
+                                   
+                                </div>
+                            </div>
+                        </div>
+                        <div class="team-member-info">
+                            <!-- <P><%=uploadDetails.get(i).getFileName() %> </P> -->
+                            <p>{{fil.filename}}</p>
+                           
+                        </div>
+                    </div>
+                  </div>
+
+                  {%endfor%}
+                  {%for message in messages %}
+                    <script>
+                    alert("{{message}}")
+                    </script>
+                  {%endfor%}
+                    
+                  <!-- <% 
+                  		if(i==4){
+                  %>
+                  <br><br>
+                           
+                   <%}%> -->
+                   
+               
+               
+                
+                 
+                 
+                       <!-- <% }%> -->
+                       </div>
+                        </div>
+                       <!-- <%
+                            }else { %>
+                 
+                  <% } %> -->
+              {%endblock%}
+              
+             
