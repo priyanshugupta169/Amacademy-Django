@@ -58,7 +58,9 @@ def login(request):
 
 def forgetpass(request):
 	try:
-		global otp,recepient
+		if not 'otp_verify_dict' in globals():
+			global otp_verify_dict
+			otp_verify_dict={}
 		if request.method=='POST':
 			email=request.POST['email']
 			if Account.objects.filter(email=email).exists:
@@ -68,6 +70,7 @@ def forgetpass(request):
 				print(msg)
 				recepient=email
 				send_mail(subject,msg,EMAIL_HOST_USER,[recepient],fail_silently=False)
+				otp_verify_dict[recepient]=otp
 				messages.info(request,"Email has been sent")
 				return render(request,"OTPverification.html",{'recepient':recepient,'otp':otp})
 			else:
@@ -80,11 +83,10 @@ def forgetpass(request):
 		return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 def otpverify(request):
-	global recepient
 	try:
 		if request.method=='POST':
 			userotp=request.POST['otp']
-
+			recepient=request.POST.get('recepient')
 			# print("userotp=",userotp)
 			if len(userotp)>=4:
 				# print("recepient=",recepient)
@@ -98,6 +100,7 @@ def otpverify(request):
 					recepient=recepient
 					# print(recepient)
 					send_mail(subject,message,EMAIL_HOST_USER,[recepient],fail_silently=False)
+					del otp_verify_dict[recepient]
 					messages.info(request,"Email has been Sent !")
 					u=Account.objects.get(email=recepient)
 					u.set_password(generated_pass)
