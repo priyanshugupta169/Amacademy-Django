@@ -13,6 +13,7 @@
                            <form action="OTPverification.html"  method="post"  onsubmit="" class="register-form">
                                {%csrf_token%}
                             	 <div class="form-group">
+                                     <input type="hidden" name="recepient" value="{{recepient}}">
                                     <input  type="text" name="otp" id="otp" placeholder="OTP" required/>
                                    
                                      <div class="form-group form-button">
